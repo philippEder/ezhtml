@@ -2,21 +2,32 @@ package com.eder.ezhtml.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
 
 public abstract class ChildHolderElement<T extends ChildHolderElement> extends HtmlElement<T> {
 
     private final List<HtmlElement> children = new ArrayList<>();
 
     public T withChild(HtmlElement child) {
+        validateChild(child);
         children.add(child);
         return (T) this;
     }
 
     public T withChildren(HtmlElement... children) {
-        this.children.addAll(Stream.of(children).collect(Collectors.toList()));
+        for (HtmlElement child : children) {
+            validateChild(child);
+            this.children.add(child);
+        }
         return (T) this;
+    }
+
+    private void validateChild(HtmlElement child) {
+        if (getRestrictedChildren() != null &&
+            !getRestrictedChildren().isEmpty() &&
+            !getRestrictedChildren().contains(child.getTag())) {
+            throw new IllegalArgumentException("Child '" + child.getTag() +"' not allowed for parent '" + this.getTag() + "'");
+        }
     }
 
     @Override
@@ -31,6 +42,10 @@ public abstract class ChildHolderElement<T extends ChildHolderElement> extends H
         htmlBuilder.append(renderClosingTag());
 
         return htmlBuilder.toString();
+    }
+
+    protected Set<String> getRestrictedChildren() {
+        return null;
     }
 
 }

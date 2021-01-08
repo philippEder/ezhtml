@@ -32,4 +32,9 @@ public class EzHtmlTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidHtmlChildrenTest() {
+        Html(Div());
+    }
+
 }
