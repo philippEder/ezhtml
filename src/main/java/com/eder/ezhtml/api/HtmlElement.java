@@ -3,30 +3,13 @@ package com.eder.ezhtml.api;
 import com.eder.ezhtml.attributes.Attribute;
 import com.eder.ezhtml.attributes.Attributes;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
 
-public abstract class DomElement<T extends DomElement> implements RenderableTag {
+public abstract class HtmlElement<T extends HtmlElement> implements RenderableTag {
 
-    private String text;
-    private final List<DomElement> children = new ArrayList<>();
-
-    private final List<String> styleClasses = new ArrayList<>();
-    private final Map<String, String> attributes = new HashMap<>();
-
-    public T withChild(DomElement child) {
-        children.add(child);
-        return (T) this;
-    }
-
-    public T withChildren(DomElement... children) {
-        this.children.addAll(Stream.of(children).collect(Collectors.toList()));
-        return (T) this;
-    }
+    protected String text;
+    protected final List<String> styleClasses = new ArrayList<>();
+    protected final Map<String, String> attributes = new LinkedHashMap<>();
 
     public T withAttribute(Attribute attribute) {
         attributes.put(attribute.getName(), attribute.getValue());
@@ -57,22 +40,7 @@ public abstract class DomElement<T extends DomElement> implements RenderableTag 
         return (T) this;
     }
 
-    public abstract String getTag();
-
-    public String render() {
-        StringBuilder htmlBuilder = new StringBuilder();
-
-        htmlBuilder.append(renderOpeningTag());
-        if (text != null) {
-            htmlBuilder.append(text);
-        }
-        children.forEach(element -> htmlBuilder.append(element.render()));
-        htmlBuilder.append(renderClosingTag());
-
-        return htmlBuilder.toString();
-    }
-
-    private String renderOpeningTag() {
+    protected String renderOpeningTag() {
         StringBuilder openTagBuilder = new StringBuilder();
 
         openTagBuilder.append("<");
@@ -88,9 +56,7 @@ public abstract class DomElement<T extends DomElement> implements RenderableTag 
         return openTagBuilder.toString();
     }
 
-    private String renderClosingTag() {
+    protected String renderClosingTag() {
         return "</" + getTag() + ">";
     }
-
-
 }

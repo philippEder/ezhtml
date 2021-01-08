@@ -1,11 +1,11 @@
 package com.eder.ezhtml.attributes;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Attributes {
 
-    private Map<String, String> attributes = new HashMap<>();
+    private Map<String, String> attributes = new LinkedHashMap<>();
 
     public Attributes(String... attributes) {
 
