@@ -5,9 +5,8 @@ import com.eder.ezhtml.attributes.Attributes;
 
 import java.util.*;
 
-public abstract class HtmlElement<T extends HtmlElement> implements RenderableTag {
+public abstract class HtmlElement<T extends HtmlElement<?>> implements RenderableTag {
 
-    protected String text;
     protected final List<String> styleClasses = new ArrayList<>();
     protected final Map<String, String> attributes = new LinkedHashMap<>();
 
@@ -32,11 +31,6 @@ public abstract class HtmlElement<T extends HtmlElement> implements RenderableTa
 
     public T withClass(String styleClass) {
         styleClasses.add(styleClass);
-        return (T) this;
-    }
-
-    public T withText(String text) {
-        this.text = text;
         return (T) this;
     }
 

@@ -4,25 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public abstract class ChildHolderElement<T extends ChildHolderElement> extends HtmlElement<T> {
+public abstract class ChildHolderElement<T extends ChildHolderElement<?>> extends TextHolderElement<T> {
 
-    private final List<HtmlElement> children = new ArrayList<>();
+    private final List<HtmlElement<?>> children = new ArrayList<>();
 
-    public T withChild(HtmlElement child) {
+    public T withChild(HtmlElement<?> child) {
         validateChild(child);
         children.add(child);
         return (T) this;
     }
 
-    public T withChildren(HtmlElement... children) {
-        for (HtmlElement child : children) {
+    public T withChildren(HtmlElement<?>... children) {
+        for (HtmlElement<?> child : children) {
             validateChild(child);
             this.children.add(child);
         }
         return (T) this;
     }
 
-    private void validateChild(HtmlElement child) {
+    private void validateChild(HtmlElement<?> child) {
         if (getRestrictedChildren() != null &&
             !getRestrictedChildren().isEmpty() &&
             !getRestrictedChildren().contains(child.getTag())) {
