@@ -2,7 +2,7 @@ package com.eder.ezhtml.tags.form;
 
 import com.eder.ezhtml.api.ChildHolderElement;
 
-public class Form extends ChildHolderElement<Form> {
+public class FormElement extends ChildHolderElement<FormElement> {
 
     @Override
     public String getTag() {

@@ -1,9 +1,7 @@
 package com.eder.ezhtml.api;
 
-public interface RenderableTag {
+public interface RenderableTag extends Renderable{
 
     String getTag();
-
-    String render();
 
 }

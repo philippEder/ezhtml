@@ -6,23 +6,23 @@ import java.util.Set;
 
 public abstract class ChildHolderElement<T extends ChildHolderElement<?>> extends TextHolderElement<T> {
 
-    private final List<HtmlElement<?>> children = new ArrayList<>();
+    private final List<BaseElement<?>> children = new ArrayList<>();
 
-    public T withChild(HtmlElement<?> child) {
+    public T withChild(BaseElement<?> child) {
         validateChild(child);
         children.add(child);
         return (T) this;
     }
 
-    public T withChildren(HtmlElement<?>... children) {
-        for (HtmlElement<?> child : children) {
+    public T withChildren(BaseElement<?>... children) {
+        for (BaseElement<?> child : children) {
             validateChild(child);
             this.children.add(child);
         }
         return (T) this;
     }
 
-    private void validateChild(HtmlElement<?> child) {
+    private void validateChild(BaseElement<?> child) {
         if (getRestrictedChildren() != null &&
             !getRestrictedChildren().isEmpty() &&
             !getRestrictedChildren().contains(child.getTag())) {
@@ -48,4 +48,7 @@ public abstract class ChildHolderElement<T extends ChildHolderElement<?>> extend
         return null;
     }
 
+    public List<BaseElement<?>> getChildren() {
+        return children;
+    }
 }

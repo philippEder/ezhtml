@@ -2,37 +2,35 @@ package com.eder.ezhtml.api;
 
 import com.eder.ezhtml.attributes.Attribute;
 import com.eder.ezhtml.attributes.Attributes;
-import com.eder.ezhtml.tags.Body;
-import com.eder.ezhtml.tags.Head;
-import com.eder.ezhtml.tags.Html;
-import com.eder.ezhtml.tags.block.Div;
-import com.eder.ezhtml.attributes.StyleClass;
-import com.eder.ezhtml.tags.form.SubmitInput;
-import com.eder.ezhtml.tags.form.Form;
-import com.eder.ezhtml.tags.form.Input;
-import com.eder.ezhtml.tags.form.TextInput;
+import com.eder.ezhtml.tags.BodyElement;
+import com.eder.ezhtml.tags.HeadElement;
+import com.eder.ezhtml.tags.HtmlElement;
+import com.eder.ezhtml.tags.block.DivElement;
+import com.eder.ezhtml.attributes.StyleClassElement;
+import com.eder.ezhtml.tags.form.SubmitInputElement;
+import com.eder.ezhtml.tags.form.FormElement;
+import com.eder.ezhtml.tags.form.InputElement;
+import com.eder.ezhtml.tags.form.TextInputElement;
 import com.eder.ezhtml.tags.generics.GenericTextHolderElement;
-import com.eder.ezhtml.tags.inline.Span;
+import com.eder.ezhtml.tags.inline.SpanElement;
 
 public class Statics {
 
-    public static Div Div() { return new Div(); }
+    public static DivElement Div() { return new DivElement(); }
 
-    public static Div Div(String text) { return new Div().withText(text); }
+    public static DivElement Div(String text) { return new DivElement().withText(text); }
 
-    public static Div Div(HtmlElement<?>... children) { return new Div().withChildren(children); }
+    public static DivElement Div(String text, Attribute attribute) { return new DivElement().withText(text).withAttribute(attribute); }
 
-    public static Div Div(Attributes attributes) {return new Div().withAttributes(attributes);}
+    public static DivElement Div(BaseElement<?>... children) { return new DivElement().withChildren(children); }
 
-    public static Div Div(Attributes attributes, HtmlElement<?>... children) {return new Div().withAttributes(attributes).withChildren(children);}
+    public static DivElement Div(Attributes attributes) {return new DivElement().withAttributes(attributes);}
 
-    public static Div Div(Attribute attribute, HtmlElement<?>... children) {return new Div().withAttribute(attribute).withChildren(children);}
+    public static DivElement Div(Attributes attributes, BaseElement<?>... children) {return new DivElement().withAttributes(attributes).withChildren(children);}
 
-    public static Div Div(Attribute attribute, String text, HtmlElement<?>... children) {return new Div().withAttribute(attribute).withText(text).withChildren(children);}
+    public static DivElement Div(Attribute attribute, BaseElement<?>... children) {return new DivElement().withAttribute(attribute).withChildren(children);}
 
-    public static StyleClass StyleClass(String className) {
-        return new StyleClass(className);
-    }
+    public static DivElement Div(Attribute attribute, String text, BaseElement<?>... children) {return new DivElement().withAttribute(attribute).withText(text).withChildren(children);}
 
     public static Attribute Attribute(String name, String value) {
         return new Attribute(name, value);
@@ -42,55 +40,55 @@ public class Statics {
         return new Attributes(attributes);
     }
 
-    public static Span Span(Attribute attribute, String text) {return new Span().withAttribute(attribute).withText(text);}
+    public static SpanElement Span(Attribute attribute, String text) {return new SpanElement().withAttribute(attribute).withText(text);}
 
-    public static Span Span(Attributes attributes, String text) {return new Span().withAttributes(attributes).withText(text);}
+    public static SpanElement Span(Attributes attributes, String text) {return new SpanElement().withAttributes(attributes).withText(text);}
 
-    public static Span Span(String text) {return new Span().withText(text);}
+    public static SpanElement Span(String text) {return new SpanElement().withText(text);}
 
-    public static Html Html(Attributes attributes, HtmlElement<?>... children) {return new Html().withAttributes(attributes).withChildren(children);}
+    public static HtmlElement Html(Attributes attributes, BaseElement<?>... children) {return new HtmlElement().withAttributes(attributes).withChildren(children);}
 
-    public static Html Html(Attribute attribute, HtmlElement<?>... children) {return new Html().withAttribute(attribute).withChildren(children);}
+    public static HtmlElement Html(Attribute attribute, BaseElement<?>... children) {return new HtmlElement().withAttribute(attribute).withChildren(children);}
 
-    public static Html Html(HtmlElement<?>... children) {return new Html().withChildren(children);}
+    public static HtmlElement Html(BaseElement<?>... children) {return new HtmlElement().withChildren(children);}
 
-    public static Head Head(Attributes attributes, HtmlElement<?>... children) {return new Head().withAttributes(attributes).withChildren(children);}
+    public static HeadElement Head(Attributes attributes, BaseElement<?>... children) {return new HeadElement().withAttributes(attributes).withChildren(children);}
 
-    public static Head Head(Attribute attribute, HtmlElement<?>... children) {return new Head().withAttribute(attribute).withChildren(children);}
+    public static HeadElement Head(Attribute attribute, BaseElement<?>... children) {return new HeadElement().withAttribute(attribute).withChildren(children);}
 
-    public static Head Head(HtmlElement<?>... children) {return new Head().withChildren(children);}
+    public static HeadElement Head(BaseElement<?>... children) {return new HeadElement().withChildren(children);}
 
-    public static Body Body(Attributes attributes, HtmlElement<?>... children) {return new Body().withAttributes(attributes).withChildren(children);}
+    public static BodyElement Body(Attributes attributes, BaseElement<?>... children) {return new BodyElement().withAttributes(attributes).withChildren(children);}
 
-    public static Body Body(Attribute attribute, HtmlElement<?>... children) {return new Body().withAttribute(attribute).withChildren(children);}
+    public static BodyElement Body(Attribute attribute, BaseElement<?>... children) {return new BodyElement().withAttribute(attribute).withChildren(children);}
 
-    public static Body Body(HtmlElement<?>... children) {return new Body().withChildren(children);}
+    public static BodyElement Body(BaseElement<?>... children) {return new BodyElement().withChildren(children);}
 
     public static GenericTextHolderElement Title(String text) {return new GenericTextHolderElement("title").withText(text);}
 
     public static GenericTextHolderElement Meta(Attribute attribute) {return new GenericTextHolderElement("meta").withAttribute(attribute);}
 
-    public static Form Form(Attribute attribute, HtmlElement<?>... children) { return new Form().withAttribute(attribute).withChildren(children); }
+    public static FormElement Form(Attribute attribute, BaseElement<?>... children) { return new FormElement().withAttribute(attribute).withChildren(children); }
 
-    public static Form Form(Attributes attributes, HtmlElement<?>... children) { return new Form().withAttributes(attributes).withChildren(children); }
+    public static FormElement Form(Attributes attributes, BaseElement<?>... children) { return new FormElement().withAttributes(attributes).withChildren(children); }
 
-    public static Input Input() { return new Input<>(); }
+    public static InputElement Input() { return new InputElement<>(); }
 
-    public static Input Input(Attribute attribute) { return new Input<>().withAttribute(attribute); }
+    public static InputElement Input(Attribute attribute) { return new InputElement<>().withAttribute(attribute); }
 
-    public static Input Input(Attributes attributes) { return new Input<>().withAttributes(attributes); }
+    public static InputElement Input(Attributes attributes) { return new InputElement<>().withAttributes(attributes); }
 
-    public static SubmitInput SubmitInput() { return new SubmitInput(); }
+    public static SubmitInputElement SubmitInput() { return new SubmitInputElement(); }
 
-    public static SubmitInput SubmitInput(Attribute attribute) { return new SubmitInput().withAttribute(attribute); }
+    public static SubmitInputElement SubmitInput(Attribute attribute) { return new SubmitInputElement().withAttribute(attribute); }
 
-    public static SubmitInput SubmitInput(Attributes attributes) { return new SubmitInput().withAttributes(attributes); }
+    public static SubmitInputElement SubmitInput(Attributes attributes) { return new SubmitInputElement().withAttributes(attributes); }
 
-    public static TextInput TextInput() { return new TextInput(); }
+    public static TextInputElement TextInput() { return new TextInputElement(); }
 
-    public static TextInput TextInput(Attribute attribute) { return new TextInput().withAttribute(attribute); }
+    public static TextInputElement TextInput(Attribute attribute) { return new TextInputElement().withAttribute(attribute); }
 
-    public static TextInput TextInput(Attributes attributes) { return new TextInput().withAttributes(attributes); }
+    public static TextInputElement TextInput(Attributes attributes) { return new TextInputElement().withAttributes(attributes); }
 
     public static GenericTextHolderElement Label(Attribute attribute) { return new GenericTextHolderElement("label").withAttributes(attribute); }
 

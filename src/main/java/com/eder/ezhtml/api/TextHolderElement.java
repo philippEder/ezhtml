@@ -1,6 +1,6 @@
 package com.eder.ezhtml.api;
 
-public abstract class TextHolderElement<T extends TextHolderElement<?>> extends HtmlElement<T> {
+public abstract class TextHolderElement<T extends TextHolderElement<?>> extends BaseElement<T> {
 
     protected String text;
 

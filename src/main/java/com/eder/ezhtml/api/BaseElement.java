@@ -3,9 +3,12 @@ package com.eder.ezhtml.api;
 import com.eder.ezhtml.attributes.Attribute;
 import com.eder.ezhtml.attributes.Attributes;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class HtmlElement<T extends HtmlElement<?>> implements RenderableTag {
+public abstract class BaseElement<T extends BaseElement<?>> implements RenderableTag {
 
     protected final List<String> styleClasses = new ArrayList<>();
     protected final Map<String, String> attributes = new LinkedHashMap<>();

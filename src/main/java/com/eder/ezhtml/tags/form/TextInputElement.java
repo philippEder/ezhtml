@@ -2,9 +2,9 @@ package com.eder.ezhtml.tags.form;
 
 import com.eder.ezhtml.attributes.Attribute;
 
-public class TextInput extends Input<TextInput> {
+public class TextInputElement extends InputElement<TextInputElement> {
 
-    public TextInput() {
+    public TextInputElement() {
         withAttribute(new Attribute("type", "text"));
     }
 

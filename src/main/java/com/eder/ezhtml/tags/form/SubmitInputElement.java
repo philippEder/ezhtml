@@ -2,9 +2,9 @@ package com.eder.ezhtml.tags.form;
 
 import com.eder.ezhtml.attributes.Attribute;
 
-public class SubmitInput extends Input<SubmitInput> {
+public class SubmitInputElement extends InputElement<SubmitInputElement> {
 
-    public SubmitInput() {
+    public SubmitInputElement() {
         withAttribute(new Attribute("type", "submit"));
     }
 
